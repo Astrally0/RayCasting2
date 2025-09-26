@@ -1,0 +1,73 @@
+local Constructor = require(script:WaitForChild("ConstructorManager"))
+local serverScriptService = game:GetService("ServerScriptService")
+local ReplicaredStorage = game:GetService("ReplicatedStorage")
+
+local RayCasting2 = {}
+RayCasting2.__index = RayCasting2
+
+function RayCasting2.New(origin: Part, direction: Part, filterType, messageDetected: boolean, ignorePart: Part) 
+	return setmetatable({
+		origin = origin,
+		direction = direction,
+		filterType = filterType,
+		messageDetected = messageDetected,
+		ignorePart = ignorePart
+	}, RayCasting2)
+end
+
+function RayCasting2.__ray(rayResult, enabled)
+	local yes, no = pcall(function()
+		if enabled == false then
+			return "["..script.Name.."2".."]".."]"..": MessageEnabled:"
+		elseif enabled == true then
+			if rayResult then
+				print("      [RayCasting2]: Detected:" ..rayResult.Instance.Name,"      [RayCasting2]: Position:", rayResult.Instance.Position, "      [RayCasting2]: Color:", rayResult.Instance.Color) 
+		                return
+	                else
+				print("["..script.Name.."2".."]".."]"..": Nothing detected")
+		                return
+			end	
+		end
+	end)
+	
+	if not yes then
+		error("["..script.Name.."]"..": error: "..no, 50)
+	else
+		return
+	end
+	
+end
+
+function RayCasting2:Run()
+	local yes, no = pcall(function()
+		local rayParams = RaycastParams.new()
+		rayParams.FilterType = self.filterType	
+		rayParams.FilterDescendantsInstances = {self.ignorePart}
+		
+		local direction: Part = self.direction.Position - self.origin.Position
+		local origin: Part = self.origin.Position
+
+		local visible = self.visible
+		local rayResult = workspace:Raycast(origin, direction)
+		
+		if not origin and direction then error("["..script.Name.."2".."]".."]"..": error: Not origin or direction", 50) return end
+		if not Constructor then return end
+		
+		Constructor:Init(rayResult, self.messageDetected)
+		if rayResult then
+			local part = rayResult.Instance:FindFirstAncestorOfClass("Part")
+			RayCasting2.__ray(rayResult, self.messageDetected, rayParams)
+		else
+			RayCasting2.__ray(rayResult)
+			return
+		end
+	end)
+	if not yes then
+		error("["..script.Name.."]"..": error: "..no, 50)
+		return
+	else
+		return "[RayCating2]: succes"
+	end
+end
+
+return RayCasting2 :: RayCasting2

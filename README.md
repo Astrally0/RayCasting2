@@ -28,8 +28,7 @@
 local Constructor_Anchored = {}
 
 function Constructor_Anchored:Init(Arg1: RaycastResult)
-        if not Arg1 then return end
-
+    if not Arg1 then return end
 	if Arg1 then
 		Arg1.Instance.Anchored = true -- change to your size
 	end
@@ -45,7 +44,6 @@ local Constructor_Color3 = {}
 
 function Constructor_Color3:Init(Arg1: RaycastResult)
 	if not Arg1 then return end
-
 	if Arg1 then
 		Arg1.Instance.Color = Color3.new(1, 0, 0) -- change to your color
 	end

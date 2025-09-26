@@ -22,7 +22,9 @@
        
        also if you add to the constructor: 1) RemoteEvent, 2) RemoteFunction, 3) UnreliableRemoteEvent, 4) Script, 5) Model, 6) Part
        EXAMPLE SCRIPT:
+	   
 -----------------------------[1 Anchored]-----------------------------------
+
 local Constructor_Anchored = {}
 
 function Constructor_Anchored:Init(Arg1: RaycastResult)

@@ -1,6 +1,6 @@
 # RayCasting2
---[[
        RayCasting2 by @Astrally0
+	   
        -----------------------------[English translation]-------------------------------------
        What is RayCasting2?
        RayCasting2 is a module that allows you to create a raycast. 
@@ -34,9 +34,11 @@ function Constructor_Anchored:Init(Arg1: RaycastResult)
 end
 
 return Constructor_Anchored
+
 --------------------------------------------------------------------
 
 -----------------------------[2 Color3]-----------------------------------
+
 local Constructor_Color3 = {}
 
 function Constructor_Color3:Init(Arg1: RaycastResult)
@@ -48,12 +50,7 @@ function Constructor_Color3:Init(Arg1: RaycastResult)
 end
 
 return Constructor_Color3
---------------------------------------------------------------------
-       ------------------------------------------------------------------
-       
-       
-       
-       
+
         -----------------------------[Русский перевод]-------------------------------------     
        Что такое RayCasting2?
        RayCasting2 — это модуль, позволяющий создавать лучи.
@@ -74,4 +71,5 @@ return Constructor_Color3
        Как использовать конструктор?
 
        Также, если добавить в конструктор: 1) RemoteEvent, 2) RemoteFunction, 3) UnreliableRemoteEvent, 4) Script, 5) Model, 6) Part
-]]
+
+	   
